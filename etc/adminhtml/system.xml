@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="payment">
+            <group id="nakopay" translate="label comment" type="text" sortOrder="50"
+                   showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>NakoPay - Bitcoin &amp; Crypto Payments</label>
+                <comment><![CDATA[Accept Bitcoin, Lightning, Litecoin, Monero and more. <a href="https://nakopay.com/docs/integrations/magento" target="_blank">Setup guide</a>]]></comment>
+
+                <field id="active" translate="label" type="select" sortOrder="10"
+                       showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="title" translate="label comment" type="text" sortOrder="20"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Title</label>
+                    <comment>Shown to customers at checkout.</comment>
+                </field>
+
+                <field id="description" translate="label comment" type="textarea" sortOrder="30"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Description</label>
+                    <comment>Shown below the title at checkout.</comment>
+                </field>
+
+                <field id="api_key" translate="label comment" type="obscure" sortOrder="40"
+                       showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Secret API Key</label>
+                    <comment><![CDATA[Your NakoPay secret key (sk_live_* or sk_test_*). Get one at <a href="https://nakopay.com/dashboard/api-keys" target="_blank">nakopay.com/dashboard/api-keys</a>.]]></comment>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <validate>required-entry</validate>
+                </field>
+
+                <field id="webhook_secret" translate="label comment" type="obscure" sortOrder="50"
+                       showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Webhook Secret</label>
+                    <comment><![CDATA[Your webhook signing secret (whsec_*). Created when you register a webhook at <a href="https://nakopay.com/dashboard" target="_blank">your dashboard</a>.]]></comment>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <validate>required-entry</validate>
+                </field>
+
+                <field id="coin" translate="label comment" type="select" sortOrder="60"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default Cryptocurrency</label>
+                    <comment>Which coin to request by default. Customer can be offered others on the hosted checkout page.</comment>
+                    <source_model>NakoPay\Magento2\Model\Config\Source\Coin</source_model>
+                </field>
+
+                <field id="invoice_expiry" translate="label comment" type="text" sortOrder="70"
+                       showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Invoice Expiry (minutes)</label>
+                    <comment>How long the customer has to pay. 0 = no expiry.</comment>
+                    <validate>validate-digits validate-zero-or-greater</validate>
+                </field>
+
+                <field id="test_mode" translate="label comment" type="select" sortOrder="80"
+                       showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Test Mode</label>
+                    <comment>When enabled, uses sk_test_* key behavior.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="order_status" translate="label comment" type="select" sortOrder="90"
+                       showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Order Status After Payment</label>
+                    <comment>Order status to set when crypto payment is confirmed.</comment>
+                    <source_model>NakoPay\Magento2\Model\Config\Source\OrderStatus</source_model>
+                </field>
+
+                <field id="api_base_url" translate="label comment" type="text" sortOrder="100"
+                       showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>API Base URL (Advanced)</label>
+                    <comment>Leave blank to use the default. Only change if instructed by NakoPay support.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
