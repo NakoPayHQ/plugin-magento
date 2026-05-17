@@ -3,7 +3,7 @@
   "description": "NakoPay Bitcoin & crypto payment gateway for Magento 2. Accept BTC, Lightning, LTC, XMR and more.",
   "type": "magento2-module",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "homepage": "https://nakopay.com/integrations",
   "support": {
     "issues": "https://github.com/NakoPayHQ/plugin-magento/issues",
