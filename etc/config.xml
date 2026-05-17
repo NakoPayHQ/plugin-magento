@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <nakopay>
+                <active>0</active>
+                <model>NakoPay\Magento2\Model\PaymentMethod</model>
+                <title>Pay with Bitcoin &amp; Crypto</title>
+                <description>Pay securely with Bitcoin, Lightning, Litecoin, Monero and more via NakoPay.</description>
+                <order_status>pending_payment</order_status>
+                <payment_action>authorize</payment_action>
+                <is_gateway>1</is_gateway>
+                <can_use_checkout>1</can_use_checkout>
+                <can_use_internal>0</can_use_internal>
+                <api_base_url>https://daslrxpkbkqrbnjwouiq.supabase.co/functions/v1</api_base_url>
+                <api_base_url_fallback>https://api.nakopay.com/v1</api_base_url_fallback>
+                <coin>BTC</coin>
+                <invoice_expiry>60</invoice_expiry>
+            </nakopay>
+        </payment>
+    </default>
+</config>
